@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </head>
+<body>
+  <div class="container">
+    <h1>Wie viel Schulden sollen wir erben?</h1>
+    <div class="row">
+      <div class="col">
+      <form name="select">
+        <h5>Voreinstellung auswählen</h5>
+        <select multiple name="scenario_preset" onchange="window.scenario.value = scenario_preset.value; window.scenario.dispatchEvent(new Event('input')); console.log('triggered')">
+          <option value="333" selected>Pariser Abkommen (1.5 Grad)</option>
+          <option value="999">No risk, no fun (2.0 Grad)</option>
+          <option value="3200">Klima erwärmt sich automatisch immer weiter (3.0 - 4.0 Grad)</option>
+        </select><br>
+        Reduktions-Pfad auswählen:
+        <select  multiple name="path_preset" onchange="window.path.value = path_preset.value; window.path.dispatchEvent(new Event('input')); console.log('triggered')">
+          <option value="2035" selected>Fridays For Future: 2035</option>
+          <option value="2050">Deutsches Klimapaket + Kohleausstieg: 2050</option>
+          <option value="2100">Business as Usual</option>
+        </select>
+        <hr>
+        <div>
+          <label for="scenario">Wie viel Temperaturanstieg möchtest du maximal erlauben?</label><br>
+          <p><input type="range" min=0 max=3200 name="scenario" step="333" id="scenario" value="333" list="tickmarks" oninput="document.querySelector('#sc-output').value = 1.5 + (scenario.value-333)/666*0.5">
+          <output id="sc-output" for="scenario">1.5</output>°C</p>
+        </div>
+        <div>
+          <label for="path">In welchem Jahr soll die Welt komplett CO2 neutral sein.</label><br>
+          <p><input type="range" min=2020 max=2100 name="path" id="path" value="2035" oninput="document.querySelector('#pa-output').value = path.value">
+          <output id="pa-output" for="path">2035</output></p>
+        </div>
+      </form>
+    </div>
+      <div id="output" class="col">
+
+      </div>
+    </div>
+    <canvas id="canvas"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script src="utils.js"></script>
+    <script src="drawing.js"></script>
+  </div>
+</body>
+</html>
