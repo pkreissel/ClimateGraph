@@ -14,13 +14,13 @@
       <div class="col">
       <form name="select">
         <h5>Voreinstellung auswählen</h5>
-        <select multiple name="scenario_preset" onchange="window.scenario.value = scenario_preset.value; window.scenario.dispatchEvent(new Event('input')); console.log('triggered')">
+        <select name="scenario_preset" onchange="window.scenario.value = scenario_preset.value; window.scenario.dispatchEvent(new Event('input')); console.log('triggered')">
           <option value="333" selected>Pariser Abkommen (1.5 Grad)</option>
           <option value="999">No risk, no fun (2.0 Grad)</option>
           <option value="3200">Klima erwärmt sich automatisch immer weiter (3.0 - 4.0 Grad)</option>
         </select><br>
         Reduktions-Pfad auswählen:
-        <select  multiple name="path_preset" onchange="window.path.value = path_preset.value; window.path.dispatchEvent(new Event('input')); console.log('triggered')">
+        <select name="path_preset" onchange="window.path.value = path_preset.value; window.path.dispatchEvent(new Event('input')); console.log('triggered')">
           <option value="2035" selected>Fridays For Future: 2035</option>
           <option value="2050">Deutsches Klimapaket + Kohleausstieg: 2050</option>
           <option value="2100">Business as Usual</option>
