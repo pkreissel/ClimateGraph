@@ -85,6 +85,11 @@ const render_graph = () => {
       },
       lineAtIndex: targets,
       options: {
+        elements: {
+            line: {
+                tension: 0 // disables bezier curves
+            }
+        },
         animation: {
             duration: 0 // general animation time
         },
